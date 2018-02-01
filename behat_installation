@@ -1,0 +1,49 @@
+step 1.
+	 Go to your project folder.
+step 2. 
+	After that Enter this following two commands.
+
+		$ curl -sS https://getcomposer.org/installer | php
+		$ COMPOSER_BIN_DIR=bin php composer.phar require drupal/drupal-extension='~3.0'
+
+step 3.
+	 In the projectdirectory create a new file called behat.yml
+
+step 4.
+	paste this code in behat.yml file and replace you base url 
+	
+	**********************code********************************
+	default:
+	  suites:
+	    default:
+	      contexts:
+		- Drupal\DrupalExtension\Context\DrupalContext
+	  extensions:
+	    Behat\MinkExtension:
+	      goutte: ~
+	      base_url: http://example.org/  # Replace with your site's URL for example local.testing.com
+	    Drupal\DrupalExtension:
+	      blackbox: ~  
+
+step 5.
+	In the projectdirectory, run
+	
+		$ bin/behat --init
+
+step 6.
+	Find pre-defined steps to work with using this command
+		
+		$ bin/behat -di
+step 7. 
+	Define your own steps in projectdir\features\FeatureContext.php
+
+step 8.
+	
+	Start adding your feature files to the features directory of your repository.
+
+step 9. 
+	Run behat files using following command
+		
+		$ bin/behat
+
+
