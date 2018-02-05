@@ -13,17 +13,24 @@ step 4.
 	paste this code in behat.yml file and replace you base url 
 	
 	**********************code********************************
+
 	default:
-	  suites:
-	    default:
-	      contexts:
-		- Drupal\DrupalExtension\Context\DrupalContext
-	  extensions:
-	    Behat\MinkExtension:
-	      goutte: ~
-	      base_url: http://example.org/  # Replace with your site's URL for example local.testing.com
-	    Drupal\DrupalExtension:
-	      blackbox: ~  
+  suites:
+    default:
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      base_url: http://local.osseeddrops8.com/  # Replace with your site's URL
+    Drupal\DrupalExtension:
+      blackbox: ~
+      drush:
+        alias: 'myalias'
 
 step 5.
 	In the projectdirectory, run
